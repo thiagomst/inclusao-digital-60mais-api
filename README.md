@@ -99,7 +99,13 @@ Depois digite `EXIT;`. Se aparecer `CREATE command denied`, o usuário da aplica
 npm run dev
 ```
 
-A aplicação fica disponível em <http://localhost:3000>. O front-end e a API são servidos pelo mesmo processo.
+Por padrão, a aplicação fica disponível em <http://localhost:3000>. O front-end e a API são servidos pelo mesmo processo. Se a porta 3000 estiver ocupada ou você quiser usar outra porta, informe `PORT` ao iniciar. Por exemplo:
+
+```bash
+PORT=3139 npm run dev
+```
+
+Nesse caso, acesse <http://localhost:3139>. A porta definida no comando vale apenas para essa execução; sem ela, a aplicação usa a porta configurada no `.env` (`3000` no `.env.example`).
 
 ```bash
 npm run typecheck
