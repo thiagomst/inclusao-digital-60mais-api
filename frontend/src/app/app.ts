@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -16,6 +16,7 @@ export class App implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly auth = inject(AuthService);
   private readonly studentService = inject(StudentService);
+  private readonly changeDetector = inject(ChangeDetectorRef);
   route = '';
   students: Student[] = [];
   total = 0;
@@ -57,7 +58,7 @@ export class App implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.onRouteChanged(this.router.url);
+    this.onRouteChanged(window.location.pathname);
   }
 
   ngOnDestroy(): void {
@@ -138,6 +139,7 @@ export class App implements OnInit, OnDestroy {
       this.authError = this.errorMessage(error, 'Não foi possível concluir o acesso. Tente novamente.');
     } finally {
       this.submitting = false;
+      this.changeDetector.markForCheck();
     }
   }
 
@@ -147,6 +149,7 @@ export class App implements OnInit, OnDestroy {
       await this.router.navigate(['/']);
     } catch {
       this.feedback = 'Não foi possível encerrar a sessão. Tente novamente.';
+      this.changeDetector.markForCheck();
     }
   }
 
@@ -171,9 +174,13 @@ export class App implements OnInit, OnDestroy {
         if (error instanceof HttpErrorResponse && error.status === 401) {
           await this.logout();
         }
+        this.changeDetector.markForCheck();
       }
     } finally {
-      if (sequence === this.requestSequence) this.loading = false;
+      if (sequence === this.requestSequence) {
+        this.loading = false;
+        this.changeDetector.markForCheck();
+      }
     }
   }
 
@@ -235,6 +242,7 @@ export class App implements OnInit, OnDestroy {
       this.formError = this.errorMessage(error, 'Não foi possível salvar o cadastro.');
     } finally {
       this.saving = false;
+      this.changeDetector.markForCheck();
     }
   }
 
@@ -245,6 +253,7 @@ export class App implements OnInit, OnDestroy {
       await this.loadStudents(this.page);
     } catch (error) {
       this.feedback = this.errorMessage(error, 'Não foi possível excluir o cadastro.');
+      this.changeDetector.markForCheck();
     }
   }
 
