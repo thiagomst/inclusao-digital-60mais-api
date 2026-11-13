@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f3ed">
+    <meta name="description" content="Uma forma mais próxima e simples de acompanhar a inclusão digital 60+.">
+    <title>Viver Conectado — Inclusão Digital 60+</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main id="landing-view" class="landing-view">
+      <header class="landing-header">
+        <a class="brand brand-dark" href="#/" data-public-route="inicio" aria-label="Viver Conectado, início">
+          <span class="brand-mark" aria-hidden="true">vc</span>
+          <span>viver<span class="brand-soft">conectado</span></span>
+        </a>
+        <nav class="landing-nav" id="landing-nav" aria-label="Navegação da página">
+          <a href="#/para-quem" data-public-route="para-quem">Para quem</a>
+          <a href="#/tecnologia" data-public-route="tecnologia">Tecnologia com cuidado</a>
+          <a href="#/proposta" data-public-route="proposta">Conheça a proposta</a>
+          <a class="landing-login" href="#entrar" data-auth="login">Entrar</a>
+          <a class="button button-primary landing-signup" href="#cadastro" data-auth="register">Criar conta <span aria-hidden="true">→</span></a>
+        </nav>
+        <button class="landing-menu-button" id="landing-menu-button" type="button" aria-label="Abrir navegação" aria-expanded="false">☰</button>
+      </header>
+
+      <div id="public-pages">
+      <section class="public-page" data-public-page="inicio">
+      <section class="landing-hero">
+        <div class="landing-hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> UM PROJETO PARA APRENDER EM TODAS AS IDADES</span>
+          <h1>A tecnologia<br>fica melhor<br><em>quando é de todos.</em></h1>
+          <p>Encontros entre gerações, novas descobertas e inteligência artificial usada com cuidado. Um espaço para aprender junto — sem deixar ninguém para trás.</p>
+          <div class="landing-actions">
+            <a class="button button-primary button-large" href="#cadastro" data-auth="register">Faça parte do projeto <span aria-hidden="true">→</span></a>
+            <a class="landing-text-link" href="#/proposta" data-public-route="proposta">Conheça a proposta <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="landing-proof"><span class="proof-avatars" aria-hidden="true"><i>60+</i><i>✳</i><i>+</i></span><span>Experiência, curiosidade<br>e comunidade, lado a lado.</span></div>
+        </div>
+        <div class="landing-hero-art">
+          <div class="art-caption caption-top"><span class="caption-icon">✳</span><span>O futuro se aprende<br>em boa companhia.</span></div>
+          <svg class="community-art" viewBox="0 0 640 560" role="img" aria-labelledby="community-title community-desc">
+            <title id="community-title">Gerações aprendendo tecnologia juntas</title>
+            <desc id="community-desc">Uma professora mais velha, um estudante e uma assistente digital compartilham um tablet em uma mesa.</desc>
+            <defs>
+              <linearGradient id="art-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e4ece1"/><stop offset="1" stop-color="#f2e8d5"/></linearGradient>
+              <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#456c56"/><stop offset="1" stop-color="#234b39"/></linearGradient>
+              <linearGradient id="shirt-coral" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dc9277"/><stop offset="1" stop-color="#bd6856"/></linearGradient>
+              <linearGradient id="shirt-blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8ba7b6"/><stop offset="1" stop-color="#607f90"/></linearGradient>
+              <filter id="art-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#294434" flood-opacity=".14"/></filter>
+            </defs>
+            <ellipse cx="330" cy="485" rx="245" ry="43" fill="#d5ddcf"/>
+            <circle cx="340" cy="263" r="205" fill="url(#art-bg)"/>
+            <circle cx="340" cy="263" r="205" fill="none" stroke="#fffefa" stroke-opacity=".65" stroke-width="2"/>
+            <path d="M92 409c22-40 59-66 105-66s83 26 105 66v53H92z" fill="#d4b68f" opacity=".8"/>
+            <path d="M428 392c17-34 47-55 84-55s67 21 84 55v54H428z" fill="#e0bda0" opacity=".8"/>
+            <g filter="url(#art-shadow)">
+              <path d="M121 372c10-66 54-102 107-102 47 0 86 37 96 102l-12 103H130z" fill="url(#shirt-coral)"/>
+              <path d="M152 280c3-51 26-87 74-87 49 0 72 38 73 87-22 16-44 24-74 24-29 0-51-8-73-24" fill="#f3e7d7"/>
+              <ellipse cx="226" cy="203" rx="54" ry="66" fill="#d9a77f"/>
+              <path d="M173 207c-8-48 12-91 55-94 40-3 65 26 57 77-11-13-25-24-43-31-16 17-39 27-69 29" fill="#d7d1c5"/>
+              <path d="M196 211c7-4 14-4 21 0M237 211c7-4 14-4 21 0" fill="none" stroke="#624e44" stroke-width="3" stroke-linecap="round"/>
+              <path d="M219 236c8 7 17 7 25 0" fill="none" stroke="#975f50" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="281" cy="239" r="7" fill="#e6bc57"/>
+              <path d="M434 370c10-65 47-97 96-97 44 0 78 34 88 97l-12 94H443z" fill="url(#shirt-blue)"/>
+              <path d="M465 282c3-45 24-77 67-77 44 0 64 34 65 77-20 14-40 21-66 21-26 0-46-7-66-21" fill="#e9dccb"/>
+              <ellipse cx="531" cy="208" rx="48" ry="59" fill="#9f694d"/>
+              <path d="M485 204c1-45 17-72 51-72 32 0 50 25 44 67-15-9-28-19-39-33-14 17-33 29-56 38" fill="#353d3c"/>
+              <path d="M505 214c6-3 12-3 18 0M541 214c6-3 12-3 18 0" fill="none" stroke="#49352d" stroke-width="3" stroke-linecap="round"/>
+              <path d="M523 238c7 5 14 5 21 0" fill="none" stroke="#754638" stroke-width="3" stroke-linecap="round"/>
+              <path d="M306 373c8-54 42-82 85-82 40 0 70 28 79 82l-11 91H317z" fill="#d8c783"/>
+              <ellipse cx="390" cy="263" rx="39" ry="48" fill="#c88f69"/>
+              <path d="M352 258c0-36 11-59 40-59 28 0 43 23 37 57-12-9-24-19-32-31-10 15-24 26-45 33" fill="#4a554c"/>
+              <path d="M372 264c5-3 10-3 14 0M396 264c5-3 10-3 14 0" fill="none" stroke="#49352d" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M382 283c5 4 11 4 16 0" fill="none" stroke="#825340" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M176 340c31 11 61 19 91 23M457 340c-28 11-56 18-84 23" fill="none" stroke="#d9a77f" stroke-width="14" stroke-linecap="round"/>
+              <path d="M263 389l84-78 102 73-84 78z" fill="#d9c8a9"/>
+              <path d="M273 384l75-68 91 65-75 69z" fill="url(#screen)"/>
+              <path d="M303 373c22-15 49-15 70 0M319 389c14-9 31-9 44 0" fill="none" stroke="#e9cf87" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="350" cy="348" r="9" fill="#e9cf87"/>
+            </g>
+            <g class="float-card float-card-ai">
+              <rect x="443" y="82" width="118" height="72" rx="17" fill="#fffefa"/>
+              <circle cx="472" cy="118" r="17" fill="#e7eee5"/>
+              <path d="M472 107v22M461 118h22M464 110l16 16M480 110l-16 16" stroke="#4b7557" stroke-width="2" stroke-linecap="round"/>
+              <path d="M500 111h42M500 124h31" stroke="#96a394" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <g class="float-card float-card-chat">
+              <rect x="84" y="124" width="106" height="61" rx="16" fill="#fffefa"/>
+              <circle cx="107" cy="154" r="7" fill="#d48468"/>
+              <path d="M123 148h49M123 161h35" stroke="#b4b6aa" stroke-width="4" stroke-linecap="round"/>
+              <path d="M108 184l-5 12 17-12" fill="#fffefa"/>
+            </g>
+            <g transform="translate(104 324) rotate(-12)">
+              <rect width="43" height="43" rx="12" fill="#e6bc57"/>
+              <path d="M21 8l3 9 9 4-9 4-3 10-4-10-9-4 9-4z" fill="#fffefa"/>
+            </g>
+            <g transform="translate(532 238) rotate(12)">
+              <rect width="38" height="38" rx="11" fill="#d8e6d9"/>
+              <path d="M11 20l6 6 11-14" fill="none" stroke="#4b7557" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+          <div class="art-caption caption-bottom"><span class="caption-icon caption-icon-ochre">↗</span><span>Trocas que fazem<br>o conhecimento circular.</span></div>
+        </div>
+        <a class="scroll-cue" href="#/para-quem" data-public-route="para-quem"><span></span> CONTINUE PARA DESCOBRIR</a>
+      </section>
+
+      </section>
+
+      <section class="public-page hidden" data-public-page="para-quem">
+      <section class="landing-audience">
+        <div class="landing-section-intro">
+          <span class="eyebrow">PARA QUEM QUER DESCOBRIR</span>
+          <h2>Um espaço digital<br>feito para pessoas.</h2>
+          <p>O Viver Conectado aproxima gerações para que a tecnologia seja mais compreensível, útil e presente no cotidiano.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card audience-older">
+            <div class="audience-art older-art" aria-hidden="true">
+              <div class="art-orbit orbit-older"></div>
+              <div class="older-figure"><span class="figure-hair"></span><span class="figure-face"></span><span class="figure-body"></span><span class="figure-arm"></span></div>
+              <div class="mini-device"><span></span><i></i><i></i></div>
+              <span class="art-spark">✳</span>
+            </div>
+            <span class="card-kicker">PESSOAS 60+ · AUTONOMIA</span>
+            <h3>Seu ritmo.<br>Suas descobertas.</h3>
+            <p>Pratique chamadas de vídeo, mensagens, fotos, serviços digitais e cuidados contra golpes com acompanhamento paciente.</p>
+          </article>
+          <article class="audience-card audience-school">
+            <div class="audience-art school-art" aria-hidden="true">
+              <div class="art-orbit orbit-school"></div>
+              <div class="school-book book-back"></div><div class="school-book book-front"></div>
+              <div class="school-person"><span class="school-hair"></span><span class="school-face"></span><span class="school-body"></span></div>
+              <div class="school-tablet"><span></span></div>
+              <span class="school-star">✳</span>
+            </div>
+            <span class="card-kicker">ESTUDANTES · PROTAGONISMO</span>
+            <h3>Talento que<br>transforma a escola.</h3>
+            <p>Jovens podem compartilhar conhecimentos, criar materiais simples e participar de trocas entre gerações.</p>
+          </article>
+          <article class="audience-card audience-community">
+            <div class="audience-art community-small-art" aria-hidden="true">
+              <div class="art-orbit orbit-community"></div>
+              <div class="community-figure community-figure-one"><i></i></div><div class="community-figure community-figure-two"><i></i></div>
+              <div class="community-heart">♡</div><span class="community-spark">✳</span>
+            </div>
+            <span class="card-kicker">EDUCADORES · COMUNIDADE</span>
+            <h3>Conexões que<br>continuam depois.</h3>
+            <p>Educadores, famílias e organizações locais ajudam a construir um ambiente acolhedor e confiável.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="audience-practice">
+        <div class="practice-copy">
+          <span class="eyebrow">TECNOLOGIA NO DIA A DIA</span>
+          <h2>Do primeiro toque<br>à próxima conquista.</h2>
+          <p>Aprender não é decorar onde apertar. É entender para que serve, praticar sem pressa e saber que existe alguém por perto para ajudar.</p>
+          <ul class="practice-list">
+            <li><span>01</span><div><strong>Conversar com quem está longe</strong><small>WhatsApp, chamadas de vídeo e envio de fotos.</small></div></li>
+            <li><span>02</span><div><strong>Resolver tarefas com mais segurança</strong><small>Serviços digitais, senhas e identificação de mensagens suspeitas.</small></div></li>
+            <li><span>03</span><div><strong>Explorar novos interesses</strong><small>Música, notícias, mapas, leitura e recursos de acessibilidade.</small></div></li>
+          </ul>
+          <a class="button button-primary" href="#cadastro" data-auth="register">Quero participar <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="practice-art" role="img" aria-label="Ilustração de uma pessoa mais velha praticando uma chamada de vídeo no celular">
+          <div class="practice-sun"></div><div class="practice-plant plant-left"><i></i><i></i><b></b></div>
+          <div class="practice-person"><i class="practice-hair"></i><i class="practice-face"></i><i class="practice-body"></i><i class="practice-hand"></i></div>
+          <div class="practice-phone"><i></i><b></b><small></small></div>
+          <div class="practice-message"><span>✳</span><div><strong>Consegui!</strong><small>Minha primeira videochamada</small></div></div>
+          <div class="practice-plant plant-right"><i></i><i></i><b></b></div>
+        </div>
+      </section>
+      </section>
+
+      <section class="public-page hidden" data-public-page="tecnologia">
+      <section class="landing-ai">
+        <div class="ai-art">
+          <div class="ai-orbit ai-orbit-one"></div><div class="ai-orbit ai-orbit-two"></div>
+          <div class="ai-platform platform-back"></div><div class="ai-platform platform-front"></div>
+          <div class="ai-spark ai-spark-one">✳</div><div class="ai-spark ai-spark-two">✦</div>
+          <div class="ai-core"><span class="ai-core-face"><i></i><i></i><b></b></span><span class="ai-core-label">IA</span></div>
+          <div class="ai-chip chip-message"><span>“Como faço<br>uma chamada?”</span><i>↗</i></div>
+          <div class="ai-chip chip-answer"><i>✳</i><span>Vamos por partes.<br><b>Toque neste botão…</b></span></div>
+          <div class="ai-dot dot-one"></div><div class="ai-dot dot-two"></div><div class="ai-dot dot-three"></div>
+        </div>
+        <div class="ai-copy">
+          <span class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> INTELIGÊNCIA ARTIFICIAL, COM INTENÇÃO</span>
+          <h2>Uma tecnologia<br>que ajuda a <em>acender</em><br>ideias — não substituir<br>encontros.</h2>
+          <p>Neste projeto, a inteligência artificial é uma possibilidade de apoio — não uma professora, nem uma fonte infalível. Pode ajudar a explicar uma palavra, organizar passos de uma tarefa ou adaptar um conteúdo. A orientação humana e a conferência das informações continuam essenciais.</p>
+          <ul class="ai-principles">
+            <li><span>01</span> Explicar funções digitais em linguagem simples</li>
+            <li><span>02</span> Sugerir exercícios para praticar com educadores</li>
+            <li><span>03</span> Proteger dados e respeitar escolhas pessoais</li>
+          </ul>
+          <a class="button button-light" href="#/proposta" data-public-route="proposta">Veja como o projeto funciona <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="ai-context">
+        <div class="ai-context-heading"><span class="eyebrow">TECNOLOGIA COM RESPONSABILIDADE</span><h2>IA como apoio.<br>Pessoas no comando.</h2></div>
+        <div class="ai-context-grid">
+          <article><span class="context-icon">?</span><h3>Perguntar sem medo</h3><p>Uma ferramenta de IA pode responder dúvidas simples em linguagem acessível e sugerir por onde começar.</p></article>
+          <article><span class="context-icon">◎</span><h3>Aprender acompanhado</h3><p>Educadores ajudam a avaliar respostas, praticar no dispositivo e decidir quando uma orientação é adequada.</p></article>
+          <article><span class="context-icon">◇</span><h3>Escolher com segurança</h3><p>Não compartilhe senhas, dados bancários ou informações pessoais em ferramentas de IA. A decisão final é sempre da pessoa.</p></article>
+        </div>
+        <p class="ai-notice"><strong>Importante:</strong> a IA ainda não está integrada à plataforma. Esta página apresenta os princípios que orientarão uma futura funcionalidade.</p>
+      </section>
+      </section>
+
+      <section class="public-page hidden" data-public-page="proposta">
+      <section class="landing-steps">
+        <div class="landing-section-intro">
+          <span class="eyebrow">CONHEÇA A PROPOSTA</span>
+          <h2>Aprender tecnologia<br>é construir autonomia.</h2>
+          <p>O Viver Conectado começa com acolhimento, prática acompanhada e respeito pela experiência de cada pessoa.</p>
+        </div>
+        <div class="steps-row">
+          <article class="step-item"><span class="step-number">01</span><span class="step-icon step-icon-person">◎</span><h3>Chegue como você é</h3><p>Não precisa saber tudo. A vontade de descobrir já é um ótimo começo.</p></article>
+          <span class="step-connector" aria-hidden="true"></span>
+          <article class="step-item"><span class="step-number">02</span><span class="step-icon step-icon-learn">↗</span><h3>Aprenda junto</h3><p>Troque experiências com estudantes, educadores e outras pessoas da comunidade.</p></article>
+          <span class="step-connector" aria-hidden="true"></span>
+          <article class="step-item"><span class="step-number">03</span><span class="step-icon step-icon-grow">✳</span><h3>Leve adiante</h3><p>Cada descoberta pode virar autonomia, confiança e uma nova possibilidade.</p></article>
+        </div>
+      </section>
+
+      <section class="project-scope">
+        <div class="scope-heading"><span class="eyebrow">UM PROJETO EM CONSTRUÇÃO</span><h2>Começamos pelo que<br>faz diferença agora.</h2><p>Esta versão conecta educadores ao cadastro e acompanhamento de alunos. O projeto evolui com responsabilidade, escuta e validação de cada etapa.</p></div>
+        <div class="scope-columns">
+          <article class="scope-card scope-current"><span class="scope-badge">DISPONÍVEL NESTA VERSÃO</span><h3>Uma base para acompanhar</h3><ul><li>Contas de educadores e acesso protegido</li><li>Cadastro, busca e gestão de alunos 60+</li><li>Informação organizada para apoiar o acompanhamento</li></ul></article>
+          <article class="scope-card scope-next"><span class="scope-badge">PRÓXIMOS PASSOS</span><h3>Aprender junto, cada vez melhor</h3><ul><li>Trilhas de aprendizagem para tarefas do cotidiano</li><li>Registro de progresso e pequenas conquistas</li><li>Atividades intergeracionais com escolas e comunidade</li><li>Apoio de IA com supervisão humana e privacidade</li></ul></article>
+        </div>
+      </section>
+
+      <section class="landing-cta">
+        <span class="cta-flower" aria-hidden="true">✳</span>
+        <div><span class="eyebrow eyebrow-light">A PRÓXIMA DESCOBERTA PODE SER SUA</span><h2>Vamos aprender<br>juntos?</h2></div>
+        <a class="button button-light" href="#cadastro" data-auth="register">Faça parte do Viver Conectado <span aria-hidden="true">→</span></a>
+      </section>
+      </section>
+      </div>
+
+      <footer class="landing-footer">
+        <a class="brand brand-dark" href="#/" data-public-route="inicio" aria-label="Viver Conectado, início"><span class="brand-mark" aria-hidden="true">vc</span><span>viver<span class="brand-soft">conectado</span></span></a>
+        <p>Aprender em todas as idades. Conectar todas as gerações.</p>
+        <a href="#entrar" data-auth="login">Acessar plataforma <span aria-hidden="true">→</span></a>
+      </footer>
+    </main>
+
+    <main id="auth-view" class="auth-view hidden">
+      <section class="auth-story" aria-label="Sobre o Viver Conectado">
+        <a class="brand brand-light" href="#/" data-public-route="inicio" aria-label="Viver Conectado, início">
+          <span class="brand-mark" aria-hidden="true">vc</span>
+          <span>viver<span class="brand-soft">conectado</span></span>
+        </a>
+        <div class="story-copy">
+          <span class="eyebrow eyebrow-light">APRENDER NÃO TEM IDADE</span>
+          <h1>O mundo digital<br>fica mais perto<br><em>quando é junto.</em></h1>
+          <p>Um espaço para acompanhar cada descoberta, no tempo de cada pessoa.</p>
+        </div>
+        <div class="story-note">
+          <span class="note-sun" aria-hidden="true">✳</span>
+          <span>Pequenos passos.<br>Grandes possibilidades.</span>
+        </div>
+        <span class="story-decoration story-decoration-one" aria-hidden="true"></span>
+        <span class="story-decoration story-decoration-two" aria-hidden="true"></span>
+      </section>
+
+      <section class="auth-panel">
+        <div class="auth-form-wrap">
+          <p class="eyebrow" id="auth-eyebrow">BEM-VINDA, BEM-VINDO</p>
+          <h2 id="auth-heading">Que bom ter você por aqui.</h2>
+          <p class="form-intro" id="auth-description">Entre para acompanhar a jornada dos seus alunos.</p>
+          <form id="auth-form" novalidate>
+            <label id="name-field" class="field hidden">
+              <span>Seu nome</span>
+              <input name="nome" autocomplete="name" minlength="2" maxlength="120">
+            </label>
+            <label class="field">
+              <span>E-mail</span>
+              <input name="email" type="email" autocomplete="email" list="known-emails" required maxlength="254" placeholder="voce@exemplo.com">
+              <datalist id="known-emails"></datalist>
+              <small class="email-hint" id="email-hint">Sugestões de e-mails usados neste navegador.</small>
+            </label>
+            <label class="field">
+              <span>Senha</span>
+              <input name="senha" type="password" autocomplete="current-password" required minlength="8" maxlength="72" placeholder="Pelo menos 8 caracteres">
+            </label>
+            <label class="remember-session" id="remember-session-field">
+              <input name="manterConectado" type="checkbox">
+              <span><strong>Manter conectado neste dispositivo</strong><small>Não armazenamos sua senha. Você pode encerrar esta sessão ao sair.</small></span>
+            </label>
+            <p class="form-error" id="auth-error" role="alert"></p>
+            <button class="button button-primary button-wide" id="auth-submit" type="submit">Entrar na plataforma <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-switch"><span id="switch-copy">Ainda não tem uma conta?</span> <button id="switch-auth" type="button">Criar conta</button></p>
+          <p class="privacy-note"><span aria-hidden="true">◈</span> Seus dados são tratados com cuidado e segurança.</p>
+        </div>
+        <span class="auth-side-note">FEITO COM CALMA, PARA APRENDER COM CONFIANÇA.</span>
+      </section>
+    </main>
+
+    <div id="app-view" class="app-view hidden">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand brand-dark" href="/" aria-label="Viver Conectado, início">
+          <span class="brand-mark" aria-hidden="true">vc</span>
+          <span>viver<span class="brand-soft">conectado</span></span>
+        </a>
+        <div class="nav-caption">ESPAÇO DE APRENDIZAGEM</div>
+        <nav class="main-nav" aria-label="Navegação principal">
+          <button class="nav-item active" data-page="inicio"><span class="nav-icon" aria-hidden="true">⌂</span> Visão geral</button>
+          <button class="nav-item" data-page="alunos"><span class="nav-icon nav-people" aria-hidden="true">◉</span> Alunos <span class="nav-count" id="nav-count">0</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <span class="help-spark" aria-hidden="true">✳</span>
+            <p><strong>Um passo de cada vez.</strong><br>O progresso também mora nas pequenas conquistas.</p>
+          </div>
+          <button class="profile-button" id="logout-button" type="button">
+            <span class="profile-avatar" id="profile-initials">VC</span>
+            <span class="profile-details"><strong id="profile-name">Sua conta</strong><small>Sair da plataforma</small></span>
+            <span class="profile-menu" aria-hidden="true">···</span>
+          </button>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+          <div class="breadcrumb"><span>Viver Conectado</span><span aria-hidden="true">/</span><strong id="breadcrumb-current">Visão geral</strong></div>
+          <div class="topbar-date" id="today-date"></div>
+        </header>
+
+        <main class="page-content">
+          <section id="home-page" class="page">
+            <div class="welcome-row">
+              <div>
+                <p class="eyebrow">UM NOVO DIA DE DESCOBERTAS</p>
+                <h1>Bom dia, <span id="welcome-name">que bom ver você</span>.</h1>
+                <p class="welcome-subtitle">Acompanhar de perto faz toda a diferença.</p>
+              </div>
+              <div class="welcome-stamp" aria-hidden="true"><span>✳</span><small>APRENDER<br>JUNTOS</small></div>
+            </div>
+            <div class="home-grid">
+              <article class="feature-card">
+                <div class="feature-topline"><span>NO SEU ESPAÇO</span><span class="feature-spark" aria-hidden="true">✳</span></div>
+                <h2>Conheça quem<br>está aprendendo.</h2>
+                <p>Organize os cadastros e acompanhe cada pessoa em sua jornada digital.</p>
+                <button class="text-link" data-go="alunos" type="button">Ver lista de alunos <span aria-hidden="true">→</span></button>
+                <div class="feature-illustration" aria-hidden="true">
+                  <span class="sun-disc"></span><span class="shape-person person-one"></span><span class="shape-person person-two"></span><span class="shape-person person-three"></span>
+                </div>
+              </article>
+              <div class="side-cards">
+                <article class="stat-card">
+                  <div class="stat-heading"><span>PESSOAS NA JORNADA</span><span class="stat-icon" aria-hidden="true">↗</span></div>
+                  <div class="stat-value" id="student-total">—</div>
+                  <p>alunos acompanhados por você</p>
+                  <div class="stat-divider"></div>
+                  <button class="text-link" data-go="alunos" type="button">Gerenciar alunos <span aria-hidden="true">→</span></button>
+                </article>
+                <article class="quote-card">
+                  <span class="quote-mark" aria-hidden="true">“</span>
+                  <blockquote>Todo começo merece ser celebrado.</blockquote>
+                  <span class="quote-attribution">UM LEMBRETE PARA HOJE</span>
+                </article>
+              </div>
+            </div>
+            <section class="recent-section">
+              <div class="section-heading"><div><p class="eyebrow">ACOMPANHAMENTO</p><h2>Chegaram por aqui</h2></div><button class="text-link" data-go="alunos" type="button">Ver todos <span aria-hidden="true">→</span></button></div>
+              <div class="recent-list" id="recent-list"><p class="empty-note">Seus alunos aparecerão aqui assim que forem cadastrados.</p></div>
+            </section>
+          </section>
+
+          <section id="students-page" class="page hidden">
+            <div class="list-page-heading">
+              <div><p class="eyebrow">CUIDADO EM CADA CADASTRO</p><h1>Alunos</h1><p class="welcome-subtitle">Cada pessoa tem seu próprio jeito e tempo de aprender.</p></div>
+              <button class="button button-primary" id="add-student" type="button"><span aria-hidden="true">＋</span> Novo aluno</button>
+            </div>
+            <div class="list-toolbar">
+              <div class="list-count"><strong id="list-total">0</strong> <span id="list-total-label">pessoas cadastradas</span></div>
+              <label class="search-box"><span aria-hidden="true">⌕</span><span class="visually-hidden">Buscar aluno</span><input id="student-search" type="search" placeholder="Buscar por nome ou e-mail"></label>
+            </div>
+            <div id="student-feedback" class="feedback" role="status" aria-live="polite"></div>
+            <div class="student-table-wrap">
+              <table class="student-table">
+                <thead><tr><th scope="col">ALUNO</th><th scope="col">IDADE</th><th scope="col">TELEFONE</th><th scope="col">NÍVEL DIGITAL</th><th scope="col"><span class="visually-hidden">Ações</span></th></tr></thead>
+                <tbody id="student-rows"></tbody>
+              </table>
+              <div id="no-students" class="table-empty hidden"><span aria-hidden="true">✳</span><h2>Nenhum aluno por aqui, ainda.</h2><p>O primeiro cadastro é o começo de uma grande jornada.</p><button class="button button-secondary" id="first-student" type="button">Cadastrar primeiro aluno</button></div>
+            </div>
+            <nav class="pagination-controls hidden" id="pagination-controls" aria-label="Paginação dos alunos">
+              <button class="pagination-button" id="previous-page" type="button" aria-label="Ir para a página anterior">← Anterior</button>
+              <span class="pagination-status" id="pagination-status" aria-live="polite"></span>
+              <button class="pagination-button" id="next-page" type="button" aria-label="Ir para a próxima página">Próxima →</button>
+            </nav>
+          </section>
+        </main>
+      </section>
+    </div>
+
+    <dialog id="student-dialog" class="student-dialog" aria-labelledby="dialog-title">
+      <form id="student-form" novalidate>
+        <div class="dialog-heading"><div><p class="eyebrow">CADASTRO COM CUIDADO</p><h2 id="dialog-title">Uma nova jornada</h2></div><button class="dialog-close" id="close-dialog" type="button" aria-label="Fechar">×</button></div>
+        <p class="form-intro">Preencha os dados da pessoa que está aprendendo.</p>
+        <label class="field"><span>Nome completo</span><input name="nome" required minlength="2" maxlength="120" autocomplete="name"></label>
+        <div class="field-row">
+          <label class="field"><span>Idade</span><input name="idade" type="number" min="60" max="120" required inputmode="numeric" placeholder="60"></label>
+          <label class="field"><span>Telefone</span><input name="telefone" type="tel" required minlength="8" maxlength="20" autocomplete="tel" placeholder="(11) 99999-9999"></label>
+        </div>
+        <label class="field"><span>E-mail <small>(opcional)</small></span><input name="email" type="email" maxlength="254" autocomplete="email" placeholder="aluno@exemplo.com"></label>
+        <label class="field"><span>Familiaridade com tecnologia</span><select name="nivel_tecnologia" required><option value="iniciante">Estou começando agora</option><option value="basico">Já conheço o básico</option><option value="intermediario">Tenho alguma experiência</option></select></label>
+        <p class="form-error" id="student-error" role="alert"></p>
+        <div class="dialog-actions"><button class="button button-secondary" id="cancel-dialog" type="button">Cancelar</button><button class="button button-primary" id="save-student" type="submit">Salvar cadastro</button></div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
