@@ -18,19 +18,20 @@ O cadastro de trilhas e o acompanhamento do progresso pedagógico são próximos
 - Node.js, TypeScript e Express 5
 - MySQL 8 e mysql2
 - JWT, bcryptjs, Zod, Helmet e express-rate-limit
-- HTML, CSS e JavaScript sem framework no front-end
+- Angular 22 com TypeScript, Router, formulários reativos e HttpClient no front-end
 
 ## Como rodar
 
 ### Requisitos
 
-- Node.js 20 ou superior
+- Node.js 22.12 ou superior
 - MySQL 8 ou superior
 
 ### Preparação
 
 ```bash
 npm install
+npm install --prefix frontend
 cp .env.example .env
 ```
 
@@ -99,20 +100,35 @@ Depois digite `EXIT;`. Se aparecer `CREATE command denied`, o usuário da aplica
 npm run dev
 ```
 
-Por padrão, a aplicação fica disponível em <http://localhost:3000>. O front-end e a API são servidos pelo mesmo processo. Se a porta 3000 estiver ocupada ou você quiser usar outra porta, informe `PORT` ao iniciar. Por exemplo:
+O comando inicia a API Express na porta `3000` e o front Angular na porta `4200`. Abra <http://localhost:4200> para usar a interface; o Angular encaminha as chamadas `/api` para a API.
+
+Se a porta da API estiver ocupada ou você quiser usar outra porta, defina `PORT` no comando. Por exemplo:
 
 ```bash
 PORT=3139 npm run dev
 ```
 
-Nesse caso, acesse <http://localhost:3139>. A porta definida no comando vale apenas para essa execução; sem ela, a aplicação usa a porta configurada no `.env` (`3000` no `.env.example`).
+Nesse caso, a API fica em <http://localhost:3139> e a interface Angular continua em <http://localhost:4200>. A porta da API vale apenas para essa execução; sem ela, usa a configurada no `.env`.
+
+Para iniciar os processos separadamente, use dois terminais:
+
+```bash
+npm run dev:api
+npm run dev:web
+```
+
+Se a API estiver em uma porta diferente de `3000` ao executar os processos separadamente, informe a mesma porta ao proxy Angular, por exemplo `API_PORT=3139 npm run dev:web`.
+
+Para compilar a API e o front-end para produção:
 
 ```bash
 npm run typecheck
 npm test
-npm run build
-npm start
+npm run build:all
+NODE_ENV=production npm start
 ```
+
+Com o build Angular presente, em produção a API Express também serve os arquivos do front-end.
 
 ## Endpoints
 
@@ -139,7 +155,8 @@ No login, `manterConectado` é opcional e assume `false`. Se vier como `true`, o
 
 ```text
 database/schema.sql  Estrutura inicial do banco
-public/              Front-end servido pela API
+frontend/            Aplicação Angular
+public/              Front-end legado usado como fallback local
 src/controllers/     Regras dos endpoints
 src/middleware/      Autenticação JWT
 src/routes/          Rotas da API

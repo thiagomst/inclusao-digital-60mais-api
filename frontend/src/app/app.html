@@ -1,0 +1,124 @@
+@if (isDashboard) {
+  <div class="workspace">
+    <aside class="sidebar" [class.sidebar-open]="menuOpen">
+      <a class="brand" routerLink="/painel"><span class="brand-mark">vc</span><span>viver<strong>conectado</strong></span></a>
+      <p class="nav-caption">ESPAÇO DE APRENDIZAGEM</p>
+      <nav class="side-nav" aria-label="Navegação principal">
+        <a routerLink="/painel" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">⌂ <span>Visão geral</span></a>
+        <a routerLink="/painel/alunos" routerLinkActive="active">◉ <span>Alunos</span><small>{{ total }}</small></a>
+      </nav>
+      <div class="side-bottom">
+        <p><strong>Um passo de cada vez.</strong><br>O progresso também mora nas pequenas conquistas.</p>
+        <button class="profile-button" type="button" (click)="logout()"><span class="avatar">{{ initials }}</span><span><strong>{{ user?.nome }}</strong><small>Sair da plataforma</small></span><b>···</b></button>
+      </div>
+    </aside>
+    <main class="dashboard">
+      <header class="topbar">
+        <button class="menu-button" type="button" (click)="menuOpen = !menuOpen" aria-label="Abrir menu">☰</button>
+        <span>Viver Conectado <i>/</i> <strong>{{ isStudentsPage ? 'Alunos' : 'Visão geral' }}</strong></span>
+        <time>{{ today }}</time>
+      </header>
+      <section class="page-content">
+        @if (isStudentsPage) {
+          <div class="page-heading">
+            <div><p class="eyebrow">CUIDADO EM CADA CADASTRO</p><h1>Alunos</h1><p>Cada pessoa tem seu próprio jeito e tempo de aprender.</p></div>
+            <button class="button primary" (click)="openStudentForm()">＋ Novo aluno</button>
+          </div>
+          <div class="toolbar"><strong>{{ total }} <span>{{ search ? 'resultados encontrados' : 'pessoas cadastradas' }}</span></strong><label class="search">⌕ <input type="search" placeholder="Buscar por nome ou e-mail" [value]="search" (input)="onSearch($event)"></label></div>
+          @if (feedback) { <p class="feedback" role="status">{{ feedback }}</p> }
+          @if (loading) {
+            <div class="loading-card" role="status"><span class="spinner"></span> Carregando cadastros…</div>
+          } @else if (students.length) {
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>ALUNO</th><th>IDADE</th><th>TELEFONE</th><th>NÍVEL DIGITAL</th><th><span class="sr-only">Ações</span></th></tr></thead>
+                <tbody>
+                  @for (student of students; track student.id) {
+                    <tr>
+                      <td><strong>{{ student.nome }}</strong><small>{{ student.email || 'E-mail não informado' }}</small></td>
+                      <td>{{ student.idade }} anos</td><td>{{ student.telefone }}</td><td><span class="level">{{ levelLabel(student.nivel_tecnologia) }}</span></td>
+                      <td class="actions"><button type="button" (click)="openStudentForm(student)" [attr.aria-label]="'Editar ' + student.nome">Editar</button><button type="button" (click)="deleteStudent(student)" [attr.aria-label]="'Excluir ' + student.nome">Excluir</button></td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            @if (totalPages > 1) {
+              <nav class="pagination" aria-label="Paginação dos alunos">
+                <button class="button secondary" [disabled]="page <= 1" (click)="loadStudents(page - 1)">← Anterior</button>
+                <span>Página {{ page }} de {{ totalPages }}</span>
+                <button class="button secondary" [disabled]="page >= totalPages" (click)="loadStudents(page + 1)">Próxima →</button>
+              </nav>
+            }
+          } @else {
+            <section class="empty-state"><span>✳</span><h2>{{ search ? 'Não encontramos resultados.' : 'Nenhum aluno cadastrado ainda.' }}</h2><p>{{ search ? 'Tente outra busca ou confira a escrita.' : 'O primeiro cadastro é o começo de uma grande jornada.' }}</p><button class="button secondary" (click)="openStudentForm()">{{ search ? 'Cadastrar novo aluno' : 'Cadastrar primeiro aluno' }}</button></section>
+          }
+        } @else {
+          <div class="welcome">
+            <div><p class="eyebrow">UM NOVO DIA DE DESCOBERTAS</p><h1>Bom dia, {{ firstName }}.</h1><p>Acompanhar de perto faz toda a diferença.</p></div><span class="welcome-stamp">✳<small>APRENDER<br>JUNTOS</small></span>
+          </div>
+          <div class="overview-grid">
+            <article class="feature-card"><p>NO SEU ESPAÇO</p><h2>Conheça quem<br>está aprendendo.</h2><p>Organize os cadastros e acompanhe cada pessoa em sua jornada digital.</p><a routerLink="/painel/alunos">Ver lista de alunos <span>→</span></a><div class="people-art" aria-hidden="true"><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><p>PESSOAS NA JORNADA</p><strong>{{ total }}</strong><p>alunos acompanhados por você</p><a routerLink="/painel/alunos">Gerenciar alunos →</a></article>
+            <article class="quote-card"><span>“</span><blockquote>Todo começo merece ser celebrado.</blockquote><small>UM LEMBRETE PARA HOJE</small></article>
+          </div>
+          <section class="recent"><div class="section-title"><div><p class="eyebrow">ACOMPANHAMENTO</p><h2>Chegaram por aqui</h2></div><a routerLink="/painel/alunos">Ver todos →</a></div>
+            @if (loading) { <div class="loading-card"><span class="spinner"></span> Carregando cadastros…</div> }
+            @else if (students.length) { @for (student of students.slice(0, 3); track student.id) { <div class="recent-row"><span class="avatar">{{ initialsFor(student.nome) }}</span><strong>{{ student.nome }}<small>{{ student.idade }} anos · {{ levelLabel(student.nivel_tecnologia) }}</small></strong></div> } }
+            @else { <p class="muted">Seus alunos aparecerão aqui assim que forem cadastrados.</p> }
+          </section>
+        }
+      </section>
+    </main>
+  </div>
+  @if (studentDialogOpen) {
+    <div class="modal-backdrop" (click)="closeStudentForm()">
+      <section class="student-modal" role="dialog" aria-modal="true" aria-labelledby="student-modal-title" (click)="$event.stopPropagation()">
+        <button class="modal-close" type="button" aria-label="Fechar" (click)="closeStudentForm()">×</button>
+        <p class="eyebrow">CADASTRO COM CUIDADO</p><h2 id="student-modal-title">{{ editingStudent ? 'Editar cadastro' : 'Uma nova jornada' }}</h2><p class="muted">Preencha os dados da pessoa que está aprendendo.</p>
+        <form [formGroup]="studentForm" (ngSubmit)="saveStudent()">
+          <label>Nome completo<input formControlName="nome" autocomplete="name" maxlength="120"></label>
+          <div class="form-row"><label>Idade<input type="number" formControlName="idade" min="60" max="120"></label><label>Telefone<input type="tel" formControlName="telefone" maxlength="20"></label></div>
+          <label>E-mail <small>(opcional)</small><input type="email" formControlName="email" maxlength="254"></label>
+          <label>Familiaridade com tecnologia<select formControlName="nivel_tecnologia"><option value="iniciante">Estou começando agora</option><option value="basico">Já conheço o básico</option><option value="intermediario">Tenho alguma experiência</option></select></label>
+          @if (formError) { <p class="form-error" role="alert">{{ formError }}</p> }
+          <div class="modal-actions"><button class="button secondary" type="button" (click)="closeStudentForm()">Cancelar</button><button class="button primary" type="submit" [disabled]="saving">{{ saving ? 'Salvando…' : 'Salvar cadastro' }}</button></div>
+        </form>
+      </section>
+    </div>
+  }
+} @else if (isAuth) {
+  <main class="auth-layout">
+    <section class="auth-story"><a class="brand brand-light" routerLink="/"><span class="brand-mark">vc</span><span>viver<strong>conectado</strong></span></a><div><p class="eyebrow">APRENDER NÃO TEM IDADE</p><h1>O mundo digital<br>fica mais perto<br><em>quando é junto.</em></h1><p>Um espaço para acompanhar cada descoberta, no tempo de cada pessoa.</p></div><small>PEQUENOS PASSOS. GRANDES POSSIBILIDADES.</small></section>
+    <section class="auth-panel"><div class="auth-card">
+      <p class="eyebrow">{{ isRegister ? 'VAMOS COMEÇAR JUNTOS' : 'BEM-VINDA, BEM-VINDO' }}</p>
+      <h2>{{ isRegister ? 'Crie seu espaço de aprendizagem.' : 'Que bom ter você por aqui.' }}</h2>
+      <p>{{ isRegister ? 'Cadastre-se para acompanhar a jornada dos seus alunos.' : 'Entre para acompanhar a jornada dos seus alunos.' }}</p>
+      <form [formGroup]="authForm" (ngSubmit)="submitAuth()">
+        @if (isRegister) { <label>Seu nome<input formControlName="nome" autocomplete="name" maxlength="120"></label> }
+        <label>E-mail<input type="email" formControlName="email" autocomplete="email" list="known-emails" placeholder="voce@exemplo.com" maxlength="254"><datalist id="known-emails">@for (email of knownEmails; track email) { <option [value]="email"></option> }</datalist><small class="muted">Sugestões de e-mails usados neste navegador.</small></label>
+        <label>Senha<input type="password" formControlName="senha" [attr.autocomplete]="isRegister ? 'new-password' : 'current-password'" placeholder="Pelo menos 8 caracteres"></label>
+        @if (!isRegister) { <label class="remember"><input type="checkbox" formControlName="manterConectado"><span><strong>Manter conectado neste dispositivo</strong><small>Não armazenamos sua senha. Você pode encerrar esta sessão ao sair.</small></span></label> }
+        @if (authError) { <p class="form-error" role="alert">{{ authError }}</p> }
+        <button class="button primary full" type="submit" [disabled]="submitting">{{ submitting ? 'Aguarde…' : (isRegister ? 'Criar minha conta →' : 'Entrar na plataforma →') }}</button>
+      </form>
+      <p class="switch-auth">{{ isRegister ? 'Já tem uma conta?' : 'Ainda não tem uma conta?' }} <a [routerLink]="isRegister ? '/entrar' : '/cadastro'">{{ isRegister ? 'Fazer login' : 'Criar conta' }}</a></p>
+      <small class="privacy">◈ Seus dados são tratados com cuidado e segurança.</small>
+    </div></section>
+  </main>
+} @else {
+  <main class="public-shell">
+    <header class="public-header"><a class="brand" routerLink="/"><span class="brand-mark">vc</span><span>viver<strong>conectado</strong></span></a><nav aria-label="Navegação da página"><a routerLink="/para-quem">Para quem</a><a routerLink="/tecnologia">Tecnologia com cuidado</a><a routerLink="/proposta">Conheça a proposta</a><a class="login-link" routerLink="/entrar">Entrar</a><a class="button primary" routerLink="/cadastro">Criar conta →</a></nav></header>
+    @if (route === 'inicio') {
+      <section class="hero"><div><p class="eyebrow">UM PROJETO PARA APRENDER EM TODAS AS IDADES</p><h1>A tecnologia<br>fica melhor<br><em>quando é de todos.</em></h1><p>Encontros entre gerações, novas descobertas e inteligência artificial usada com cuidado. Um espaço para aprender junto — sem deixar ninguém para trás.</p><div class="hero-actions"><a class="button primary" routerLink="/cadastro">Faça parte do projeto →</a><a class="text-link" routerLink="/proposta">Conheça a proposta →</a></div><small>Experiência, curiosidade e comunidade, lado a lado.</small></div><div class="hero-art" role="img" aria-label="Gerações aprendendo tecnologia juntas"><div class="art-sun"></div><div class="art-person art-older">60+</div><div class="art-person art-young">✳</div><div class="art-tablet">Aprender<br>juntos</div><span>O futuro se aprende<br>em boa companhia.</span></div></section>
+      <section class="public-cards"><p class="eyebrow">UM ESPAÇO FEITO PARA PESSOAS</p><h2>Aprender tecnologia<br>é construir autonomia.</h2><div class="card-grid"><article><span>01 · PESSOAS 60+</span><h3>Seu ritmo.<br>Suas descobertas.</h3><p>Pratique chamadas de vídeo, mensagens, serviços digitais e cuidados contra golpes com acompanhamento paciente.</p></article><article><span>02 · ESTUDANTES</span><h3>Talento que transforma.</h3><p>Jovens podem compartilhar conhecimentos e participar de trocas entre gerações.</p></article><article><span>03 · COMUNIDADE</span><h3>Conexões que continuam.</h3><p>Educadores, famílias e organizações locais ajudam a construir um ambiente acolhedor.</p></article></div></section>
+    } @else if (route === 'para-quem') {
+      <section class="info-page"><p class="eyebrow">PARA QUEM QUER DESCOBRIR</p><h1>Um espaço digital<br>feito para pessoas.</h1><p>O Viver Conectado aproxima gerações para que a tecnologia seja mais compreensível, útil e presente no cotidiano.</p><div class="card-grid"><article><h2>Pessoas 60+</h2><p>Aprenda a usar mensagens, chamadas, fotos, serviços digitais e recursos de acessibilidade no seu ritmo.</p></article><article><h2>Estudantes</h2><p>Compartilhe conhecimentos, desenvolva empatia e participe de ações de inclusão digital.</p></article><article><h2>Educadores e comunidade</h2><p>Acompanhe alunos e crie espaços seguros para aprender em conjunto.</p></article></div><a class="button primary" routerLink="/cadastro">Quero participar →</a></section>
+    } @else if (route === 'tecnologia') {
+      <section class="info-page technology-page"><p class="eyebrow">INTELIGÊNCIA ARTIFICIAL, COM INTENÇÃO</p><h1>IA como apoio.<br><em>Pessoas no comando.</em></h1><p>A IA pode ajudar a explicar uma palavra ou organizar passos de uma tarefa. A orientação humana e a conferência das informações continuam essenciais.</p><div class="card-grid"><article><h2>Perguntar sem medo</h2><p>Respostas simples para dúvidas do dia a dia.</p></article><article><h2>Aprender acompanhado</h2><p>Educadores ajudam a avaliar respostas e praticar.</p></article><article><h2>Escolher com segurança</h2><p>Nunca compartilhe senhas ou dados bancários em ferramentas de IA.</p></article></div><p class="notice"><strong>Importante:</strong> a IA ainda não está integrada à plataforma. Esta página apresenta princípios para uma futura funcionalidade.</p></section>
+    } @else {
+      <section class="info-page"><p class="eyebrow">CONHEÇA A PROPOSTA</p><h1>Aprender tecnologia<br>é construir autonomia.</h1><p>O Viver Conectado começa com acolhimento, prática acompanhada e respeito pela experiência de cada pessoa.</p><div class="card-grid"><article><h2>Chegue como você é</h2><p>Não precisa saber tudo. A vontade de descobrir já é um ótimo começo.</p></article><article><h2>Aprenda no seu ritmo</h2><p>Pratique com apoio e celebre cada conquista.</p></article><article><h2>Compartilhe descobertas</h2><p>O aprendizado cresce quando as gerações trocam experiências.</p></article></div><p class="notice"><strong>Esta versão já oferece:</strong> autenticação e gestão de alunos. Trilhas e acompanhamento de progresso são próximos passos.</p><a class="button primary" routerLink="/cadastro">Faça parte do projeto →</a></section>
+    }
+    <footer><span>Viver Conectado</span><p>Aprender em todas as idades. Conectar todas as gerações.</p><a routerLink="/entrar">Acessar plataforma</a></footer>
+  </main>
+}

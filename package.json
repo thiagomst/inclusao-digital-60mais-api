@@ -4,7 +4,11 @@
   "private": true,
   "main": "dist/app.js",
   "scripts": {
-    "dev": "node ./node_modules/ts-node-dev/lib/bin.js --respawn src/app.ts",
+    "dev": "API_PORT=${PORT:-3000} concurrently -k -n API,WEB \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node ./node_modules/ts-node-dev/lib/bin.js --respawn src/app.ts",
+    "dev:web": "env -u PORT npm --prefix frontend start",
+    "build:web": "npm --prefix frontend run build",
+    "build:all": "npm run build && npm run build:web",
     "build": "tsc",
     "start": "node dist/app.js",
     "typecheck": "tsc --noEmit",
@@ -30,6 +34,7 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.9.3",
+    "concurrently": "^10.0.7",
     "ts-node-dev": "^2.0.0",
     "typescript": "^6.0.3"
   }

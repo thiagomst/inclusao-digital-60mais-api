@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import fs from 'node:fs';
 import path from 'node:path';
 import { env } from './config/env';
 import { AppError } from './errors/AppError';
@@ -47,10 +48,24 @@ app.use('/api/alunos', alunosRoutes);
 app.use('/alunos', alunosRoutes);
 
 const publicDirectory = path.resolve(__dirname, '../public');
-app.use(express.static(publicDirectory));
-app.get('/', (_req, res) => {
-  res.sendFile(path.join(publicDirectory, 'index.html'));
-});
+const angularDirectory = path.resolve(process.cwd(), 'frontend/dist/frontend/browser');
+const hasBuiltAngularApp = env.nodeEnv === 'production' && fs.existsSync(path.join(angularDirectory, 'index.html'));
+
+if (hasBuiltAngularApp) {
+  app.use(express.static(angularDirectory));
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/api/')) {
+      next();
+      return;
+    }
+    res.sendFile(path.join(angularDirectory, 'index.html'));
+  });
+} else {
+  app.use(express.static(publicDirectory));
+  app.get('/', (_req, res) => {
+    res.sendFile(path.join(publicDirectory, 'index.html'));
+  });
+}
 
 app.use((_req, _res, next) => {
   next(new AppError(404, 'Esta página não foi encontrada.', 'NOT_FOUND'));
